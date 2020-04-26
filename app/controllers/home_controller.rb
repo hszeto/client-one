@@ -15,4 +15,10 @@ class HomeController < ApplicationController
 
     redirect_to root_path
   end
+
+  def refresh_session
+    cookies.delete :_client_one_session
+
+    redirect_to "#{ENV['OAUTH_PROVIDER_URL']}/admin/logout"
+  end
 end
